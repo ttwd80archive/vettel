@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -10,16 +10,14 @@
 	<security:http pattern="/index" security="none" />
 
 	<security:http auto-config="true">
-		<security:intercept-url pattern="/user-management/**"
-			access="ROLE_ADMIN" />
-		<security:intercept-url pattern="/main"
-			access="IS_AUTHENTICATED_FULLY" />
-		<security:form-login login-page="/index"
-			authentication-failure-url="/index?fail=true" default-target-url="/main"
+		<security:intercept-url pattern="/user-management/**" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/main" access="IS_AUTHENTICATED_FULLY" />
+		<security:form-login login-page="/index" authentication-failure-url="/index?fail=true" default-target-url="/main"
 			always-use-default-target="true" />
-		<security:logout logout-url="/logout"
-			logout-success-url="/index" invalidate-session="true" />
+		<security:logout logout-url="/logout" logout-success-url="/index" invalidate-session="true" />
 	</security:http>
 
+	<bean id="authenticateUserService" class="com.twistlet.vettel.model.security.service.UserDetailsServiceImpl">
+	</bean>
 
 </beans>
