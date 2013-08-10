@@ -16,9 +16,21 @@ public class TestBCrypt {
 	}
 
 	@Test
-	public void testLength() {
+	public void testLengthShort() {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encoded = encoder.encode("a");
+		assertEquals(60, encoded.length());
+	}
+	@Test
+	public void testLengthMiddle() {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encoded = encoder.encode("hello");
+		assertEquals(60, encoded.length());
+	}
+	@Test
+	public void testLengthLong() {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encoded = encoder.encode("======this should be longer than sixty characters wide.======");
 		assertEquals(60, encoded.length());
 	}
 
