@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `username` varchar(80) COLLATE utf32_bin NOT NULL,
   `name` varchar(120) COLLATE utf32_bin NOT NULL,
-  `password` char(64) COLLATE utf32_bin NOT NULL,
+  `password` char(60) COLLATE utf32_bin NOT NULL,
   `enabled` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;

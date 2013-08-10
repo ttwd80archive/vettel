@@ -18,6 +18,19 @@
 	</security:http>
 
 	<bean id="authenticateUserService" class="com.twistlet.vettel.model.security.service.UserDetailsServiceImpl">
+		<constructor-arg>
+			<ref bean="personRepository" />
+		</constructor-arg>
 	</bean>
+
+
+	<bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="authenticateUserService">
+			<security:password-encoder ref="encoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
 
 </beans>
