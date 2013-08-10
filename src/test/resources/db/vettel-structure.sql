@@ -56,8 +56,13 @@ CREATE TABLE `person_authority` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(80) COLLATE utf32_bin NOT NULL DEFAULT '0',
   `authority` varchar(50) COLLATE utf32_bin NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_authority` (`username`,`authority`),
+  KEY `FK_person_authority_authority` (`authority`),
+  KEY `username` (`username`),
+  CONSTRAINT `FK_person_authority_authority` FOREIGN KEY (`authority`) REFERENCES `authority` (`authority`),
+  CONSTRAINT `FK_person_authority_person` FOREIGN KEY (`username`) REFERENCES `person` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
