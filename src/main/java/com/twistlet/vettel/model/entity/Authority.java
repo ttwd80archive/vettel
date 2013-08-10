@@ -1,9 +1,13 @@
 package com.twistlet.vettel.model.entity;
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,13 +21,20 @@ public class Authority  implements java.io.Serializable {
 
      private String authority;
      private String description;
+     private Set<PersonAuthority> personAuthorities = new HashSet<PersonAuthority>(0);
 
     public Authority() {
     }
 
+	
     public Authority(String authority, String description) {
+        this.authority = authority;
+        this.description = description;
+    }
+    public Authority(String authority, String description, Set<PersonAuthority> personAuthorities) {
        this.authority = authority;
        this.description = description;
+       this.personAuthorities = personAuthorities;
     }
    
      @Id 
@@ -46,6 +57,15 @@ public class Authority  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="authority")
+    public Set<PersonAuthority> getPersonAuthorities() {
+        return this.personAuthorities;
+    }
+    
+    public void setPersonAuthorities(Set<PersonAuthority> personAuthorities) {
+        this.personAuthorities = personAuthorities;
     }
 
 

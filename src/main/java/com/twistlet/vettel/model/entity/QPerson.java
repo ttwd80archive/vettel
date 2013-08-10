@@ -7,6 +7,7 @@ import com.mysema.query.types.path.*;
 import com.mysema.query.types.PathMetadata;
 import javax.annotation.Generated;
 import com.mysema.query.types.Path;
+import com.mysema.query.types.path.PathInits;
 
 
 /**
@@ -24,6 +25,8 @@ public class QPerson extends EntityPathBase<Person> {
     public final StringPath name = createString("name");
 
     public final StringPath password = createString("password");
+
+    public final SetPath<PersonAuthority, QPersonAuthority> personAuthorities = this.<PersonAuthority, QPersonAuthority>createSet("personAuthorities", PersonAuthority.class, QPersonAuthority.class, PathInits.DIRECT2);
 
     public final StringPath username = createString("username");
 

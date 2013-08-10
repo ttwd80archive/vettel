@@ -1,9 +1,13 @@
 package com.twistlet.vettel.model.entity;
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,15 +23,24 @@ public class Person  implements java.io.Serializable {
      private String name;
      private String password;
      private byte enabled;
+     private Set<PersonAuthority> personAuthorities = new HashSet<PersonAuthority>(0);
 
     public Person() {
     }
 
+	
     public Person(String username, String name, String password, byte enabled) {
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.enabled = enabled;
+    }
+    public Person(String username, String name, String password, byte enabled, Set<PersonAuthority> personAuthorities) {
        this.username = username;
        this.name = name;
        this.password = password;
        this.enabled = enabled;
+       this.personAuthorities = personAuthorities;
     }
    
      @Id 
@@ -53,7 +66,7 @@ public class Person  implements java.io.Serializable {
     }
 
     
-    @Column(name="password", nullable=false, length=64)
+    @Column(name="password", nullable=false, length=60)
     public String getPassword() {
         return this.password;
     }
@@ -70,6 +83,15 @@ public class Person  implements java.io.Serializable {
     
     public void setEnabled(byte enabled) {
         this.enabled = enabled;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="person")
+    public Set<PersonAuthority> getPersonAuthorities() {
+        return this.personAuthorities;
+    }
+    
+    public void setPersonAuthorities(Set<PersonAuthority> personAuthorities) {
+        this.personAuthorities = personAuthorities;
     }
 
 
