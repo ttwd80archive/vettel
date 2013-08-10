@@ -21,6 +21,9 @@
 		<constructor-arg>
 			<ref bean="personRepository" />
 		</constructor-arg>
+		<constructor-arg>
+			<ref bean="personAuthorityRepository" />
+		</constructor-arg>
 	</bean>
 
 

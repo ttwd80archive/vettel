@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.twistlet.vettel.model.entity.Authority;
 import com.twistlet.vettel.model.entity.Person;
@@ -27,6 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 		final Person person = personRepository.findOne(username);
 		if (person == null) {
