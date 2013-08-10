@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>reveng</groupId>
 	<artifactId>reveng</artifactId>
@@ -120,25 +119,22 @@
 								<property name="runtime_classpath" refid="maven.runtime.classpath" />
 								<property name="test_classpath" refid="maven.test.classpath" />
 								<property name="plugin_classpath" refid="maven.plugin.classpath" />
-								<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask"
-									classpathref="maven.runtime.classpath" />
-								<delete>
-									<fileset dir="../src/main/java/com/twistlet/vettel/model/entity"
-										includes="*.*" />
+								<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="maven.runtime.classpath" />
+								<delete quiet="true">
+									<fileset dir="../src/main/java/com/twistlet/vettel/model/entity" includes="*.*" />
 								</delete>
 								<hibernatetool>
-									<jdbcconfiguration configurationfile="hibernate.cfg.xml"
-										packagename="com.twistlet.vettel.model.entity" revengfile="hibernate.reveng.xml" />
+									<jdbcconfiguration configurationfile="hibernate.cfg.xml" packagename="com.twistlet.vettel.model.entity"
+										revengfile="hibernate.reveng.xml" />
 									<hbm2java jdk5="true" ejb3="true" destdir="../src/main/java" />
 								</hibernatetool>
-								<java classname="com.twistlet.entity.ActionRemoveComments"
-									classpathref="maven.runtime.classpath">
+								<java classname="com.twistlet.entity.ActionRemoveComments" classpathref="maven.runtime.classpath">
 									<arg value="../src/main/java/com/twistlet/vettel/model/entity" />
 								</java>
 
 								<!-- APT based code generation -->
-								<javac srcdir="../src/main/java/com/twistlet/vettel/model/entity"
-									classpathref="maven.runtime.classpath" includeantruntime="false">
+								<javac srcdir="../src/main/java/com/twistlet/vettel/model/entity" classpathref="maven.runtime.classpath"
+									includeantruntime="false">
 									<compilerarg value="-proc:only" />
 									<compilerarg value="-processor" />
 									<compilerarg value="com.mysema.query.apt.jpa.JPAAnnotationProcessor" />
