@@ -21,6 +21,7 @@
 
 LOCK TABLES `authority` WRITE;
 /*!40000 ALTER TABLE `authority` DISABLE KEYS */;
+INSERT INTO `authority` (`authority`, `description`) VALUES ('ROLE_ADMIN','The most powerful role');
 /*!40000 ALTER TABLE `authority` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30,6 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
+INSERT INTO `person` (`username`, `name`, `password`, `enabled`) VALUES ('admin','Administrator','$2a$10$3Frma5rvcwKUi9EkIxP6nejNWh9Ex9nak6KljbR/khHTcFQjUQF26',1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39,6 +41,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `person_authority` WRITE;
 /*!40000 ALTER TABLE `person_authority` DISABLE KEYS */;
+INSERT INTO `person_authority` (`id`, `username`, `authority`) VALUES (1,'admin','ROLE_ADMIN');
 /*!40000 ALTER TABLE `person_authority` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
