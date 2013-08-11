@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin menu</title>
+</head>
+<body>
+	<div>Manage Users</div>
+	<div>
+		<a href="#" th:href="@{/user/new}">Add new user</a>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Full name</th>
+					<th>Roles</th>
+					<th>Password</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${users}">
+					<td><span th:text="${user.username}"></span></td>
+					<td><span th:text="${user.name}"></span></td>
+					<td><a href="" th:href="@{'/user/edit-roles/' + ${user.username}}">Change</a></td>
+					<td><a href=""
+						th:href="@{'/user/change-password/' + ${user.username}}">Change</a></td>
+					<td><a href="" th:href="@{'/user/edit/' + ${user.username}}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript" src=""
+		th:src="@{/js/lib/jquery-1.10.2.min.js}"></script>
+</body>
+</html>
