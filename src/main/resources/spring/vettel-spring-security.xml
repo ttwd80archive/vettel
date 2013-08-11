@@ -12,7 +12,7 @@
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/user-management/**" access="ROLE_ADMIN" />
 		<security:intercept-url pattern="/main" access="IS_AUTHENTICATED_FULLY" />
-		<security:form-login login-page="/index" authentication-failure-url="/index?fail=true" default-target-url="/main"
+		<security:form-login login-page="/login" authentication-failure-url="/login-error" default-target-url="/main"
 			always-use-default-target="true" />
 		<security:logout logout-url="/logout" logout-success-url="/index" invalidate-session="true" />
 	</security:http>
@@ -27,7 +27,7 @@
 	</bean>
 
 
-	<bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<security:authentication-manager>
 		<security:authentication-provider user-service-ref="authenticateUserService">
