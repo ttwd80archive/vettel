@@ -32,7 +32,7 @@ public abstract class AbstractCargoIT {
 		configuration.setProperty(TomcatPropertySet.AJP_PORT, "8209");
 
 		final DefaultContainerFactory defaultContainerFactory = new DefaultContainerFactory();
-		container = (InstalledLocalContainer) defaultContainerFactory.createContainer("tomcat6x", ContainerType.INSTALLED,
+		container = (InstalledLocalContainer) defaultContainerFactory.createContainer("tomcat7x", ContainerType.INSTALLED,
 				configuration);
 		container.setHome(installer.getHome());
 
