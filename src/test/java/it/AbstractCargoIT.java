@@ -36,7 +36,7 @@ public abstract class AbstractCargoIT {
 				configuration);
 		container.setHome(installer.getHome());
 
-		final WAR deployable = new WAR("./target/vettel-0.0.1.war");
+		final WAR deployable = new WAR("./target/vettel.war");
 		deployable.setContext("vettel");
 		configuration.addDeployable(deployable);
 
