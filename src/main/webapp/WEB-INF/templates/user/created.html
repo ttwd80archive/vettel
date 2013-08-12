@@ -5,13 +5,11 @@
 <title>Admin menu</title>
 </head>
 <body>
-	<div>Admin menu</div>
-	<div>
-		<ul>
-			<li><a href="#" th:href="@{/logout}">Logout</a></li>
-			<li><a href="#" th:href="@{/role/index}">Manage Role</a></li>
-			<li><a href="#" th:href="@{/user/index}">Manage User</a></li>
-		</ul>
-	</div>
+	<div>Manage Users</div>
+	<div>New User created</div>
+	<ul>
+		<li><a href="#" th:href="@{/user/index}">Manage User</a></li>
+		<li><a href="#" th:href="@{/user/new}">Add new user</a></li>
+	</ul>
 </body>
 </html>

@@ -25,4 +25,10 @@ public class UserServiceImpl implements UserService {
 		return personRepository.findAll();
 	}
 
+	@Override
+	@Transactional
+	public void save(final Person person) {
+		personRepository.save(person);
+	}
+
 }

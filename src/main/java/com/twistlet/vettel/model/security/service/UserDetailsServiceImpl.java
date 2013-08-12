@@ -41,7 +41,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			final Authority authority = personAuthority.getAuthority();
 			authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
 		}
-		final User user = new User(person.getUsername(), person.getPassword(), authorities);
+		// person.getUsername(), person.getPassword(), authorities, );
+		final User user = new User(person.getUsername(), person.getPassword(), (person.getEnabled() == 1), true, true, true,
+				authorities);
 		return user;
 	}
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin menu</title>
+</head>
+<body>
+	<div>Create new user</div>
+	<form action="#" th:action="@{/user/create}" th:object="${user}"
+		method="post">
+		<div>
+			<ul th:if="${#fields.hasErrors('*')}">
+				<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
+					is incorrect</li>
+			</ul>
+		</div>
+		<div>
+			<div>
+				<label for="username">Username:</label><input id="username"
+					name="username" th:field="*{username}" />
+			</div>
+			<div>
+				<label for="pasword">Password:</label><input id="password"
+					name="password" th:field="*{password}" />
+			</div>
+			<div>
+				<label for="confirmPassword">Confirm Password:</label><input
+					id="confirmPassword" name="confirmPassword"
+					th:field="*{confirmPassword}" />
+			</div>
+			<div>
+				<label for="name">Name:</label><input id="name" name="name"
+					th:field="*{name}" />
+			</div>
+			<div>
+				<label for="enabled">Enabled:</label><input type="checkbox"
+					id="enabled" name="enabled" th:field="*{enabled}" />
+			</div>
+			<div>
+				<button type="submit">Create</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

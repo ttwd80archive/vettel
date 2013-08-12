@@ -7,14 +7,13 @@
 	<security:http pattern="/js/**" security="none" />
 	<security:http pattern="/images/**" security="none" />
 	<security:http pattern="/css/**" security="none" />
-	<security:http pattern="/index" security="none" />
 
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/user-management/**" access="ROLE_ADMIN" />
 		<security:intercept-url pattern="/main" access="IS_AUTHENTICATED_FULLY" />
 		<security:form-login login-page="/login" authentication-failure-url="/login-error" default-target-url="/main"
 			always-use-default-target="true" />
-		<security:logout logout-url="/logout" logout-success-url="/index" invalidate-session="true" />
+		<security:logout logout-url="/logout" logout-success-url="/main" invalidate-session="true" />
 	</security:http>
 
 	<bean id="authenticateUserService" class="com.twistlet.vettel.model.security.service.UserDetailsServiceImpl">
