@@ -32,6 +32,9 @@ UNLOCK TABLES;
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`username`, `name`, `password`, `enabled`) VALUES ('admin','Administrator','$2a$10$3Frma5rvcwKUi9EkIxP6nejNWh9Ex9nak6KljbR/khHTcFQjUQF26',1);
+INSERT INTO `person` (`username`, `name`, `password`, `enabled`) VALUES ('user01','user01','$2a$10$2yAAF1O16bjZCl4Vu8xc5O6vuKyE3zzmg1aJ1pJx1HbSXnT5waKP.',0);
+INSERT INTO `person` (`username`, `name`, `password`, `enabled`) VALUES ('user02','user02','$2a$10$PqC2Ql/7WfsWIMFvvu39Oe/YA5BHPo9MpQAwMkz06MWlNm8mTGFB6',1);
+INSERT INTO `person` (`username`, `name`, `password`, `enabled`) VALUES ('user03','user03','$2a$10$n2dOpncJdJk4icZSNCeJ1u/48cOo2sFHBGB5oSKO6h53XRqORknla',1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
