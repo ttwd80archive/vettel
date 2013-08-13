@@ -8,7 +8,6 @@ public class DoNothingIT extends AbstractCargoIT {
 
 	@Test
 	public void testSanity() {
-		System.out.println("RUNNING SANITY");
 		assertTrue(true);
 	}
 }
