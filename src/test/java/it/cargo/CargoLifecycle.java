@@ -1,5 +1,6 @@
-package it;
+package it.cargo;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.codehaus.cargo.container.ContainerType;
@@ -13,16 +14,14 @@ import org.codehaus.cargo.container.property.ServletPropertySet;
 import org.codehaus.cargo.container.tomcat.TomcatPropertySet;
 import org.codehaus.cargo.generic.DefaultContainerFactory;
 import org.codehaus.cargo.generic.configuration.DefaultConfigurationFactory;
-import org.junit.After;
-import org.junit.Before;
 
-public abstract class AbstractCargoIT {
+public class CargoLifecycle {
 
 	private final String TOMCAT_7_ZIP_LOCATION = "http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.zip";
 	private InstalledLocalContainer container;
 
-	@Before
-	public void setUp() throws Exception {
+	public void start() throws MalformedURLException {
+		System.out.println("Starting Tomcat 7");
 		final Installer installer = new ZipURLInstaller(new URL(TOMCAT_7_ZIP_LOCATION));
 		installer.install();
 		final DefaultConfigurationFactory defaultConfigurationFactory = new DefaultConfigurationFactory();
@@ -44,9 +43,8 @@ public abstract class AbstractCargoIT {
 
 	}
 
-	@After
-	public void tearDown() throws Exception {
+	public void stop() {
+		System.out.println("Stopping Tomcat 7");
 		container.stop();
 	}
-
 }

@@ -272,6 +272,12 @@
 			<version>3.16.1-GA</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium.fluent</groupId>
+			<artifactId>fluent-selenium</artifactId>
+			<version>1.6.3</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>vettel</finalName>
